@@ -1,0 +1,241 @@
+
+/*passo 1 resetando a pagina */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+/*definindo a fonte */
+a{
+    font-family: sans-serif;
+    /*tirando sublinhado padrão*/
+    text-decoration: none;
+}
+
+.header{
+    /*colocando cor no cabeçãlho*/
+    background: #a5c;
+
+    /*definindo hidth left mobile 'preenchimento em linha" */
+    padding-inline: 16px;
+}
+
+.nav{
+    /*defindo altura e a largura do menu*/
+    max-width: 1280px;
+    height: 70px;
+
+    /*definindo a margen hidth left */
+    margin-inline: auto;
+
+    
+/*faz  com que os intens fiquem um do lado do outro*/
+    display: flex;
+
+
+/*coloca um espaçamento entre os intens*/
+justify-content: space-between;
+
+/*alinhar ao centro*/
+align-items: center;
+
+}
+
+.logo{
+    /*aumentar fonte ou tamanho do objeto*/
+    font-size: 48px;
+
+}
+
+.nav-list{
+    /*colocando um item doladodo outro*/
+    display: flex;
+
+
+    /*espaçamento entre os intens*/
+    gap: 32px;
+
+
+    /*tirar bolinhas do menu*/
+    list-style: none;
+
+}
+
+.nav-list a{
+    /*aumentar fonte ou tamanho do objeto*/
+    font-size: 18px;
+
+    /*definir cor da fonte*/
+    color: #fff;
+
+    /*aumentar area de click*/
+    padding-block: 16px;
+}
+
+.hero{
+
+    /*cauculando a altura da maxima da pagina menos o tamanho definido do menu*/
+    height: calc(100vh - 70px);
+
+    /**/
+    background: center / cover no-repeat url(./bg.jpg);
+}
+
+.hamburger{
+     /*ESCONDENDE*/
+     display: none;
+
+    /*BOTÂO MENU
+    remover borda*/
+
+    border: none;
+
+    /*remover fundo*/
+    background: none;
+
+    /*definindoborda superior*/
+    border-top: 3px solid #fff;
+  
+    /*adicionar ponteiro ponta*/
+    cursor: pointer;
+}
+
+.hamburger::before,
+.hamburger::after{
+    /*  MONTANDO BOTÃO
+    procura o significado*/
+    content: '';
+
+     /*bloquear posisão*/
+    display: block;
+
+     /*definindolargura*/
+     width: 30px;
+
+
+     /*DEFININDO LARGURA*/
+     height: 3PX;
+
+
+      /*FUNDO BRANCO*/
+     background: #fff;
+
+      /*DEFININDO MARGIN TOP DIVISÃO DOS PIXELS*/
+      margin-top: 5PX;
+
+      position: relative;
+      transition: 0.3s;
+
+}
+
+@media(max-width: 750px)
+{
+/*quando for menor que 720px o botão menu ira aparecer*/
+.hamburger{
+    display: block;
+
+   /*trazendo bptão menu para frente*/
+   z-index: 1;
+}
+
+/*configirando tela cheia em celular*/
+.nav-list{
+    /*deixamos position fixa*/
+    position: fixed;
+
+    /*altura em cima*/
+    top: 0;
+    left: 0;
+
+
+    /*largura*/
+    width: 100vw;
+    /*altura*/
+    height: 100vh;
+
+    /*adicionado o fundo para toda tela*/
+    background: #a5c;
+
+    /*deixando o menu em circulo*/
+    clip-path: circle(100px at 90% -15%);
+
+    /*colocando animação de trasinção saida suave*/
+    transition: 1s ease-out;
+    
+
+
+    
+    /*mudando para coluna os intens*/
+    flex-direction: column;
+
+
+    /*distribuir os intesn no espaço disponivel*/
+    justify-content: space-around;
+
+    /*alinhando ao centro*/
+    align-items: center;
+
+
+    /*espaçamento entre os intens*/
+    gap: 0px;
+
+    /*desabilitando outros intens nofundo*/
+    pointer-events: none;
+}
+.nav-list a{
+    /*animação nos links
+    aumentando afonte*/
+    font-size: 24px;
+
+    /**/
+    opacity: 0;
+}
+
+/*animação*/
+
+.nav-list li:nth-child(1) a {
+    transition: 0.5s 0.2s;
+}
+
+.nav-list li:nth-child(2) a {
+    transition: 0.5s 0.4s;
+}
+
+.nav-list li:nth-child(3) a {
+    transition: 0.5s 0.6s;
+}
+
+
+/*estilos ativos fazer com que o circulo se espanda*/
+
+.nav.active .nav-list{
+    clip-path: circle(1500px at 90% -15%);
+    
+    /*trazer os eventos de ponteiro de volta*/
+    pointer-events: all;
+    }
+    .nav.active .nav-list a{
+        opacity: 1;
+    }
+
+    /*trasformando obotão menu em X*/
+    .nav.active .hamburger{
+        position: fixed;
+        top: 26px;
+        right: 16px;
+        border-top-color: transparent;
+    }
+    .nav.active .hamburger::before {
+        transform: rotate(135deg);
+      }
+
+    .nav.active .hamburger::after{
+        transform: rotate(-135deg);
+        top: -7px;
+    }
+
+}
+
+
+
